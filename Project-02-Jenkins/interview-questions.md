@@ -1,39 +1,23 @@
-# Jenkins Interview Questions
+## What is Pipeline as Code?
 
-## 1. What is Jenkins?
-
-Jenkins is an open-source automation server used to implement Continuous Integration (CI) and Continuous Deployment (CI/CD).
+Pipeline as Code means storing the Jenkins pipeline definition in a version-controlled repository such as GitHub using a Jenkinsfile.
 
 ---
 
-## 2. What is CI?
+## What is a Jenkins Agent?
 
-Continuous Integration is the practice of automatically building and testing code whenever developers commit changes.
-
----
-
-## 3. What is CD?
-
-Continuous Deployment/Delivery is the practice of automatically deploying applications after successful builds and tests.
+A Jenkins Agent is a machine where pipeline stages execute.
 
 ---
 
-## 4. What is a Jenkins Pipeline?
+## Difference between Freestyle and Pipeline Job?
 
-A Jenkins Pipeline is a sequence of automated stages that build, test, and deploy an application.
+Freestyle Job:
+- UI based
+- Difficult to maintain
 
----
-
-## 5. What is a Jenkinsfile?
-
-A Jenkinsfile is a text file written in Groovy syntax that defines the CI/CD pipeline as code.
-
----
-
-## 6. What are the common pipeline stages?
-
-- Checkout
-- Build
-- Test
-- Docker Build
-- Deploy
+Pipeline:
+- Code based
+- Stored in Git
+- Version controlled
+- Easy to maintain

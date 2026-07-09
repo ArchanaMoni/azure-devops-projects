@@ -2,40 +2,51 @@
 
 ## Project Overview
 
-This project demonstrates the basics of Continuous Integration and Continuous Deployment (CI/CD) using Jenkins.
-
-## Objective
-
-Understand how Jenkins automates the software delivery process.
-
-## CI/CD Pipeline Stages
-
-1. Checkout Source Code
-2. Build Application
-3. Run Automated Tests
-4. Build Docker Image
-5. Deploy Application
+This project demonstrates a Jenkins Declarative Pipeline integrated with GitHub using Pipeline as Code.
 
 ## Technologies Used
 
-- Jenkins
+- Jenkins LTS
+- Java 21
 - Git
 - GitHub
-- Docker (Next Phase)
-- Kubernetes (Next Phase)
 
-## Project Structure
+## Pipeline Stages
 
-- Jenkinsfile
-- README.md
-- interview-questions.md
-- pipeline-diagram.md
-- screenshots/
+1. Environment Information
+2. List Files
+3. Build
+4. Test
+5. Deploy
+
+## Pipeline Flow
+
+Developer
+↓
+GitHub Repository
+↓
+Jenkins
+↓
+Pipeline Execution
+
+## Features
+
+- Jenkins installed locally
+- Pipeline as Code
+- GitHub Integration
+- Shell command execution
+- Console Output verification
+
+## Screenshots
+
+- Jenkins Dashboard
+- Pipeline Success
+- Console Output
 
 ## Learning Outcomes
 
-- Jenkins Architecture
-- CI/CD Concepts
-- Jenkins Pipeline
+- Jenkins Installation
+- Declarative Pipeline
 - Jenkinsfile
-- Pipeline Stages
+- Pipeline as Code
+- Git Integration
