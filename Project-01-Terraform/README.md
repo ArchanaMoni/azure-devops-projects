@@ -1,8 +1,8 @@
 # Terraform Azure Infrastructure Project
 
-## Project Overview
+## Overview
 
-This project provisions Azure infrastructure using Terraform.
+This project demonstrates Infrastructure as Code (IaC) using Terraform to provision Azure infrastructure.
 
 ## Resources Created
 
@@ -11,11 +11,29 @@ This project provisions Azure infrastructure using Terraform.
 - Azure Subnet
 - Azure Storage Account
 
+## Project Architecture
+
+Terraform
+    │
+    ▼
+Azure Resource Group
+    │
+    ▼
+Virtual Network
+    │
+    ▼
+Subnet
+    │
+    ▼
+Storage Account
+
 ## Technologies Used
 
 - Terraform
 - Microsoft Azure
 - AzureRM Provider
+- Git
+- GitHub
 
 ## Terraform Commands
 
@@ -33,10 +51,13 @@ terraform destroy
 - variables.tf
 - main.tf
 - outputs.tf
+- screenshots
+- interview-questions.md
 
-## Learning Outcome
+## Learning Outcomes
 
-- Learned Infrastructure as Code (IaC)
-- Created Azure resources using Terraform
-- Used variables and outputs
-- Managed Azure infrastructure with Terraform
+- Infrastructure as Code
+- Azure Resource Management
+- Terraform Variables
+- Terraform Outputs
+- Git Version Control
