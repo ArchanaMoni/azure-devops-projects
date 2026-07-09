@@ -1,8 +1,8 @@
-# Terraform Azure Infrastructure Deployment
+# Terraform Azure Infrastructure Project
 
 ## Project Overview
 
-This project demonstrates Infrastructure as Code (IaC) using Terraform to deploy Azure infrastructure.
+This project provisions Azure infrastructure using Terraform.
 
 ## Resources Created
 
@@ -11,42 +11,32 @@ This project demonstrates Infrastructure as Code (IaC) using Terraform to deploy
 - Azure Subnet
 - Azure Storage Account
 
-## Project Structure
+## Technologies Used
 
-```
-Project-01-Terraform/
-│
-├── provider.tf
-├── variables.tf
-├── main.tf
-├── outputs.tf
-└── README.md
-```
+- Terraform
+- Microsoft Azure
+- AzureRM Provider
 
 ## Terraform Commands
 
 ```bash
 terraform init
-terraform fmt
 terraform validate
 terraform plan
 terraform apply
 terraform destroy
 ```
 
-## Technologies Used
+## Project Structure
 
-- Terraform
-- Microsoft Azure
-- Azure CLI
-- Git
-- GitHub
+- provider.tf
+- variables.tf
+- main.tf
+- outputs.tf
 
-## Skills Demonstrated
+## Learning Outcome
 
-- Infrastructure as Code (IaC)
-- Azure Resource Deployment
-- Terraform Variables
-- Terraform Outputs
-- Resource Dependencies
-- Azure Networking
+- Learned Infrastructure as Code (IaC)
+- Created Azure resources using Terraform
+- Used variables and outputs
+- Managed Azure infrastructure with Terraform
