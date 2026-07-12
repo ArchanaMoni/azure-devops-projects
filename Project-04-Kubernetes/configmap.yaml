@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: app-config
+  namespace: devops-demo
+
+data:
+  ENVIRONMENT: "Development"
+  APP_NAME: "Kubernetes Demo"
+  LOG_LEVEL: "INFO"
