@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t cicd-demo:v1 .'
+            }
+        }
+
+        stage('Verify Docker Image') {
+            steps {
+                sh 'docker images | grep cicd-demo'
+            }
+        }
+
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
