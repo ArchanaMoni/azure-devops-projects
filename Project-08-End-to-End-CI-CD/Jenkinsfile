@@ -1,0 +1,74 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Checkout Source') {
+            steps {
+                echo 'Checking out source code...'
+                checkout scm
+            }
+        }
+
+        stage('Check Docker Environment') {
+            steps {
+                sh '''
+                echo "PATH=$PATH"
+                whoami
+                hostname
+                which docker || true
+                docker --version || true
+                '''
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                docker build -t cicd-demo:v1 .
+                '''
+            }
+        }
+
+        stage('Verify Docker Image') {
+            steps {
+                sh '''
+                docker images | grep cicd-demo
+                '''
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh '''
+                echo "Deploying application to Kubernetes..."
+                echo "kubectl apply -f deployment.yaml"
+                echo "kubectl apply -f service.yaml"
+                '''
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                echo "Checking Kubernetes deployment..."
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution completed.'
+        }
+
+        success {
+            echo 'Deployment Successful.'
+        }
+
+        failure {
+            echo 'Deployment Failed.'
+        }
+    }
+}
