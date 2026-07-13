@@ -12,30 +12,32 @@ pipeline {
         }
 
         stage('Check Docker Environment') {
-            steps {
-                sh '''
-                echo "PATH=$PATH"
-                whoami
-                hostname
-                which docker || true
-                docker --version || true
-                '''
+           steps {
+              sh '''
+              echo "PATH=$PATH"
+              export PATH=/usr/local/bin:$PATH
+              which docker
+              docker --version
+              '''
+  
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 sh '''
+                export PATH=/usr/local/bin:$PATH
                 docker build -t cicd-demo:v1 .
                 '''
             }
         }
 
         stage('Verify Docker Image') {
-            steps {
-                sh '''
-                docker images | grep cicd-demo
-                '''
+           steps {
+              sh '''
+              export PATH=/usr/local/bin:$PATH
+              docker images | grep cicd-demo
+              '''
             }
         }
 
