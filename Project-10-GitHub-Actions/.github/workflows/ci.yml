@@ -1,0 +1,31 @@
+name: GitHub Actions CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show System Information
+        run: |
+          echo "GitHub Actions Runner"
+          pwd
+          ls -la
+
+      - name: Build Docker Image
+        run: |
+          docker build -t github-actions-demo:v1 .
+
+      - name: Verify Docker Image
+        run: |
+          docker images | grep github-actions-demo
+
+      - name: Pipeline Completed
+        run: echo "GitHub Actions pipeline executed successfully!"
