@@ -56,12 +56,14 @@ pipeline {
      } 
 
        stage('Deploy to Kubernetes') {
-    steps {
-        dir('Project-08-End-to-End-CI-CD') {
-            sh '''
-            kubectl apply -f deployment.yaml
-            kubectl apply -f service.yaml
-            '''
+          steps {
+             dir('Project-08-End-to-End-CI-CD') {
+                 sh '''
+                 export PATH=/usr/local/bin:$PATH
+
+                 kubectl apply -f deployment.yaml
+                 kubectl apply -f service.yaml
+                 '''
         }
     }
 }
@@ -69,14 +71,16 @@ pipeline {
        stage('Verify Deployment') {
           steps {
              dir('Project-08-End-to-End-CI-CD') {
-                 sh '''
-                 kubectl get deployments
-                 kubectl get services
-                 kubectl get pods
-                 '''
-           }
-       }
-  }
+             sh '''
+             export PATH=/usr/local/bin:$PATH
+
+             kubectl get deployments
+             kubectl get services
+             kubectl get pods
+             '''
+        }
+    }
+}
 
 
 }
