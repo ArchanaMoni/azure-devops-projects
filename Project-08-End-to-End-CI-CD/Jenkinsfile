@@ -33,42 +33,50 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
+     stage('Build Docker Image') {
+        steps {
+           dir('Project-08-End-to-End-CI-CD') {
+               sh '''
+               export PATH=/usr/local/bin:$PATH
+               docker build -t cicd-demo:v1 .
+               '''
+           }
+       }
+     }
+
+       stage('Verify Docker Image') {
+          steps {
+             dir('Project-08-End-to-End-CI-CD') {
                 sh '''
                 export PATH=/usr/local/bin:$PATH
-                docker build -t cicd-demo:v1 .
+                docker images | grep cicd-demo
                 '''
-            }
+             }
         }
+     } 
 
-        stage('Verify Docker Image') {
-           steps {
-              sh '''
-              export PATH=/usr/local/bin:$PATH
-              docker images | grep cicd-demo
-              '''
-            }
-        }
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh '''
-                echo "Deploying application to Kubernetes..."
-                echo "kubectl apply -f deployment.yaml"
-                echo "kubectl apply -f service.yaml"
-                '''
-            }
-        }
-
-        stage('Verify Deployment') {
-            steps {
-                sh '''
-                echo "Checking Kubernetes deployment..."
-                '''
-            }
+       stage('Deploy to Kubernetes') {
+    steps {
+        dir('Project-08-End-to-End-CI-CD') {
+            sh '''
+            kubectl apply -f deployment.yaml
+            kubectl apply -f service.yaml
+            '''
         }
     }
+}
+
+       stage('Verify Deployment') {
+    steps {
+        dir('Project-08-End-to-End-CI-CD') {
+            sh '''
+            kubectl get deployments
+            kubectl get services
+            kubectl get pods
+            '''
+        }
+    }
+}
 
     post {
         always {
