@@ -67,17 +67,19 @@ pipeline {
 }
 
        stage('Verify Deployment') {
-    steps {
-        dir('Project-08-End-to-End-CI-CD') {
-            sh '''
-            kubectl get deployments
-            kubectl get services
-            kubectl get pods
-            '''
-        }
-    }
-}
+          steps {
+             dir('Project-08-End-to-End-CI-CD') {
+                 sh '''
+                 kubectl get deployments
+                 kubectl get services
+                 kubectl get pods
+                 '''
+           }
+       }
+  }
 
+
+}
     post {
         always {
             echo 'Pipeline execution completed.'
