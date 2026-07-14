@@ -5,12 +5,22 @@ pipeline {
     stages {
 
         stage('Checkout Source') {
-            steps {
-                echo 'Checking out source code...'
-                checkout scm
-            }
-        }
+           steps {
+              echo 'Checking out source code...'
+              checkout scm
 
+              sh '''
+              echo "Current Directory:"
+              pwd
+ 
+              echo "Files in current directory:"
+              ls -la
+
+              echo "Project-08 contents:"
+              ls -la Project-08-End-to-End-CI-CD
+              '''
+       }
+    }
         stage('Check Docker Environment') {
            steps {
               sh '''
