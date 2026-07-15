@@ -18,10 +18,11 @@ jobs:
           echo "GitHub Actions Runner"
           pwd
           ls -la
+          ls -la Project-10-GitHub-Actions
 
       - name: Build Docker Image
         run: |
-          docker build -t github-actions-demo:v1 .
+          docker build -t github-actions-demo:v1 ./Project-10-GitHub-Actions
 
       - name: Verify Docker Image
         run: |
